@@ -6,24 +6,29 @@ using Valve.VR;
 public class InputTest : MonoBehaviour {
 
     public SteamVR_Input_Sources HandType;
-    public SteamVR_Action_Boolean GrabAction;
-    public SteamVR_Action_Vector3 AxisInput;
-
-    [SerializeField]
-    Vector3 axis;
+    public SteamVR_Action_Boolean TouchPad;
+    public SteamVR_Action_Boolean Trigger;
 
     void Update()
     {
-        if (GrabAction.GetStateDown(HandType))
+        if (TouchPad.GetStateDown(HandType))
         {
-            Debug.Log("GetStateDown");
+            Debug.Log("TouchPad Down");
         }
 
-        if (GrabAction.GetStateUp(HandType))
+        if (TouchPad.GetStateUp(HandType))
         {
-            Debug.Log("GetLastStateUp");
+            Debug.Log("TouchPad Up");
         }
 
-        axis = AxisInput.GetAxis(HandType);
+        if (Trigger.GetStateDown(HandType))
+        {
+            Debug.Log("Trigger Down");
+        }
+
+        if (Trigger.GetStateUp(HandType))
+        {
+            Debug.Log("Trigger Up");
+        }
     }
 }
